@@ -1,0 +1,242 @@
+{% if product.title contains 'Custom Pet Canvas Print' %}
+
+
+ 
+
+  
+  {% render "custom-field-size" %}
+  {% render "custom-field-framing" %}
+  
+  <div class="line-item-property__field uploadFile">
+    <strong>Upload your photo <span class="photoGuide">View Photo Guide</span></strong>
+    <label for="upload-a-file"> 
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
+        <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"/>
+      </svg>
+      <span>Tap to Upload</span></label>
+    <input multiple="multiple"  required class="required" id="upload-a-file" type="file" name="properties[Upload a File]">
+  </div>
+
+
+  <div class="photoGuideBox">
+    <div>
+      <h2>Photo Guide</h2>
+      <p>For best results, please follow our handy guide below when choosing a photo to upload. We use the exact image uploaded to create your artwork, so please only choose images you are happy for us to use.</p>
+      <ul>
+        <li><img src="https://cdn.shopify.com/s/files/1/0306/4253/6586/files/good-dog.jpg?v=1635865105"></li>
+        <li><img src="https://cdn.shopify.com/s/files/1/0306/4253/6586/files/bad-dog2.jpg?v=1635865191"></li>
+      </ul>
+      <h3>Extra Info</h3>
+      <p>Once your order is placed, our friendly team will review all your photos uploaded and select the most suitable one for your chosen design. If none of your photos are suitable, we will email to ask for alternatives.</p>
+      <p>If you feel your photos do not meet our guidelines, we encourage you to take new ones if possible, to avoid any delays with your order.</p>
+      <p>We create your artwork, using the exact photo uploaded. It is your responsibility to submit a high quality photo that adheres to our guidelines. We cannot offer refunds for photos that do not meet the criteria outlined in our guide.</p>
+      <span class="guidClose">Close Guide</span>
+    </div>
+  </div>
+ 
+
+    <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+    integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <script> 
+
+  $(".photoGuide").click(function(){
+    $(".photoGuideBox").css({"display":"block"});
+  });
+  $(".guidClose").click(function(){
+    $(".photoGuideBox").css({"display":"none"});
+  });
+        
+ 
+     
+    $(".DisplaySize").click(function(){
+      $(".chooseListofSize").css({"display":"block"});
+      $(".dropdown_List .selectOption .DisplaySize").addClass("rotate");
+    });
+    
+    $(".chooseListofSize > li").click(function(){
+      $(".chooseListofSize").css({"display":"none"}); 
+      $(".selectOption .chooseList li label").attr("aria-selected","false");
+      $(this).find('label').attr("aria-selected","true");
+      $(".dropdown_List .selectOption .DisplaySize").removeClass("rotate");
+      
+      $(".Select_size input").change(function(){  
+        if( $(this).is(":checked") ){  
+            var size = $(this).val();  
+            console.log(size);
+            $(".DisplaySize").html(size);
+        }
+      }); 
+  
+    });
+    
+    $(".DisplayFrame").click(function(){
+      $(".chooseListofFrame").css({"display":"block"});
+      $(".dropdown_List .selectOption .DisplayFrame").addClass("rotate");
+    });
+    $(".chooseListofFrame > li").click(function(){
+      $(".chooseListofFrame").css({"display":"none"}); 
+      $(".selectOption .chooseList li label").attr("aria-selected","false");
+      $(this).find('label').attr("aria-selected","true");
+      $(".dropdown_List .selectOption .DisplayFrame").removeClass("rotate");
+      
+      $(".Select_Frame input").change(function(){  
+        if( $(this).is(":checked") ){  
+            var size = $(this).val();  
+            console.log(size);
+            $(".DisplayFrame").html(size);
+        }
+      }); 
+      
+    });
+  </script>
+  <style>
+    .uploadFile{
+  margin-bottom:30px;
+    }
+  .uploadFile .photoGuide {
+    font-size: 14px;
+    color: #52504b;
+    text-decoration: underline;
+    margin-left:20px
+}
+.photoGuideBox {
+    position: fixed;
+    max-width: 514px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #99999952;
+    padding: 20px;
+    z-index: 999;
+    text-align: center;
+  display:none;
+}
+    .photoGuideBox div{}
+    .photoGuideBox div p{
+      font-size: 14px;
+    margin-bottom: 10px;
+    }
+    .photoGuideBox div h2 {
+    font-size: 25px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+    .photoGuideBox div h3 {
+    font-size: 20px;
+}
+    .photoGuideBox div ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+}
+.photoGuideBox div ul li {
+    padding: 5px;
+    flex-basis: 40%;
+}
+    .photoGuideBox div ul li img{}
+   .photoGuideBox div .guidClose {
+    display: flex;
+    align-items: center;
+    background: #fbd43c;
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-weight: 600;
+    max-width: 155px;
+    justify-content: center;
+    margin: auto;
+}
+    
+    .uploadFile strong, .dropdown_List strong {
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    margin-top: 20px !important;
+    display: block;
+}
+   .uploadFile #upload-a-file{
+      display:none;
+    }
+    .uploadFile label svg{
+      margin-right:10px;
+    }
+    .uploadFile label {
+    /* display: block; */
+    display: flex;
+    align-items: center;
+    background: #fbd43c;
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-weight: 600;
+    max-width: 300px;
+    justify-content: center;
+}
+    .uploadFile input{}
+    
+    .dropdown_List{}
+    .dropdown_List label{}
+    .dropdown_List .selectOption {
+        position: relative;
+        max-width: 300px;
+    }
+    .dropdown_List .selectOption .DisplaySize, .dropdown_List .selectOption .DisplayFrame {
+    border: solid 1px #333333 !important;
+    font-size: 20px;
+    padding: 8px 10px 8px 10px !important;
+    border-radius: 4px;
+      position:relative;
+}
+    .dropdown_List .selectOption .DisplaySize::after, .dropdown_List .selectOption .DisplayFrame::after {
+    content: "\203A";
+    font-size: 40px;
+    line-height: 0;
+    right: 10px;
+    position: absolute;
+    top: 45%;
+    transform: translateY(-45%) rotate(0deg);
+}
+    .dropdown_List .selectOption .DisplaySize.rotate::after, .dropdown_List .selectOption .DisplayFrame.rotate::after{
+    transform: translateY(-45%) rotate(90deg);
+      
+    }
+    
+    .selectOption .chooseList li {
+      list-style: none;
+      border: 1px solid #b7b7b7;
+      border-bottom: 0;
+      transition-duration:0.3s;
+      cursor:pointer;
+    }
+    .selectOption .chooseList li label{
+      display: flex;
+      align-items: center;
+      cursor:pointer;
+    }
+    .selectOption .chooseList li:hover{
+      background-color: #333;
+      color:#fff;
+    }
+    .selectOption .chooseList li label[aria-selected="true"]{ 
+      background-color:#fbd43c;
+    }
+    .selectOption .chooseList{
+      position: absolute;
+      background: #fff;
+      display:none;
+      width: 100%;
+      border-bottom: 1px solid #b7b7b7;
+      border-radius: 4px;
+      z-index: 5;
+    }
+    .selectOption .chooseList li img {
+    width: 70px;
+    margin: 10px;
+}
+    .selectOption .chooseList li span{}
+  </style>
+
+{% endif %}
